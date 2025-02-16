@@ -1,138 +1,131 @@
 # University_Course_Management_System
 
-# Overview
+## Overview
 
-The University Course Management System is a Spring Boot-based RESTful API designed to manage students, instructors, courses, assignments, and user authentication.
+This is a Spring Boot-based University Course Management System that allows admins, instructors, and students to manage courses, assignments, and enrollments efficiently.
 
-# Tech Stack
+## Technologies Used
 
-1. Spring Boot (Spring Web, Spring Data JPA, Spring DevTools)
-
-2. MySQL (Database)
-
-3. JPA/Hibernate (ORM for database interactions)
-
-4. Maven (Dependency management)
-
-# Project Setup
-
-# Prerequisites
-
-Java 17+
-
-Spring Boot
-
-MySQL Server
-
-Eclipse
-
-# Steps to Run the Project
-
-1. Clone the repository:
-
-    git clone <repository-url>
+    -Java (Spring Boot)
     
-    cd university-course-management
+    -Spring Web
+    
+    -Spring Data JPA
+    
+    -Spring DevTools
+    
+    -MySQL Database
 
-2. Configure MySQL Database in application.properties:
+## Installation & Setup
+
+1.Clone the repository:
+
+    git clone <repository_url>
+    
+    Open the project in Eclipse as a Spring Starter Project.
+
+2.Ensure you have the following dependencies installed:
+
+    -Spring Web
+    
+    -Spring Data JPA
+    
+    -Spring DevTools
+    
+    -MySQL Connector
+
+3.Configure your database in application.properties:
 
     spring.datasource.url=jdbc:mysql://localhost:3306/university_db
-   
     spring.datasource.username=root
-   
     spring.datasource.password=yourpassword
-   
     spring.jpa.hibernate.ddl-auto=update
-   
-    spring.jpa.show-sql=true
 
-4. Build and run the project:
-
-    mvn spring-boot:run
+4. Run the application from UniversityApplication.java/ as a spring boot application.
 
 # API Endpoints
 
-# Admin Endpoints
+## Admin Endpoints
 
-# Student Management
+## Student Management
 
-GET /api/admin/students - Retrieve all students
+    -GET /api/admin/students - Retrieve all students
+    
+    -GET /api/admin/students/{studentId} - Get student details
+    
+    -POST /api/admin/students - Create a new student
+    
+    -PUT /api/admin/students/{studentId} - Update student details
+    
+    -DELETE /api/admin/students/{studentId} - Delete a student
 
-GET /api/admin/students/{studentId} - Retrieve student details
+## Instructor Management
 
-POST /api/admin/students - Create a new student
+    -GET /api/admin/instructors - Retrieve all instructors
+    
+    -GET /api/admin/instructors/{instructorId} - Get instructor details
+    
+    -POST /api/admin/instructors - Create a new instructor
+    
+    -PUT /api/admin/instructors/{instructorId} - Update instructor details
+    
+    -DELETE /api/admin/instructors/{instructorId} - Delete an instructor
 
-PUT /api/admin/students/{studentId} - Update student details
+## Course Management
 
-DELETE /api/admin/students/{studentId} - Delete a student
+    -GET /api/admin/courses - Retrieve all courses
+    
+    -GET /api/admin/courses/{courseId} - Get course details
+    
+    -POST /api/admin/courses - Create a new course
+    
+    -PUT /api/admin/courses/{courseId} - Update course details
+    
+    -DELETE /api/admin/courses/{courseId} - Delete a course
+    
+    -POST /api/admin/courses/{courseId}/assign-instructor - Assign an instructor to a course
+    
+    -GET /api/admin/courses/{courseId}/students - Get enrolled students
+    
+    -GET /api/admin/courses/by-instructor?email={email} - Get courses by instructor
+    
+    -GET /api/admin/courses/{courseId}/enrollment-count - Get enrollment count
 
-# Instructor Management
+## Assignment Management
 
-GET /api/admin/instructors - Retrieve all instructors
+    -GET /api/admin/assignments - Retrieve all assignments
+    
+    -GET /api/admin/assignments/{assignmentId} - Get assignment details
+    
+    -POST /api/admin/assignments - Create a new assignment
+    
+    -PUT /api/admin/assignments/{assignmentId} - Update an assignment
+    
+    -DELETE /api/admin/assignments/{assignmentId} - Delete an assignment
+    
+    -GET /api/admin/assignments/due-before?date=YYYY-MM-DD - Get assignments due before a date
 
-GET /api/admin/instructors/{instructorId} - Retrieve instructor details
+## Student Endpoints
 
-POST /api/admin/instructors - Create a new instructor
+    -GET /api/students/{studentId} - Get student profile
+    
+    -PUT /api/students/{studentId} - Update student profile
+    
+    -GET /api/students/{studentId}/courses - Get enrolled courses
+    
+    -POST /api/students/{studentId}/courses/{courseId} - Enroll in a course
+    
+    -DELETE /api/students/{studentId}/courses/{courseId} - Withdraw from a course
+    
+    -GET /api/students/{studentId}/assignments - Get assignments
 
-PUT /api/admin/instructors/{instructorId} - Update instructor details
+## Authentication Endpoints
 
-DELETE /api/admin/instructors/{instructorId} - Delete an instructor
+    -POST /api/auth/register - Register a new user
+    
+    -POST /api/auth/login - Authenticate user and get a token
 
-# Course Management
-
-GET /api/admin/courses - Retrieve all courses
-
-GET /api/admin/courses/{courseId} - Retrieve course details
-
-POST /api/admin/courses - Create a new course
-
-PUT /api/admin/courses/{courseId} - Update a course
-
-DELETE /api/admin/courses/{courseId} - Delete a course
-
-POST /api/admin/courses/{courseId}/assign-instructor - Assign instructor to a course
-
-GET /api/admin/courses/{courseId}/students - Get students in a course
-
-GET /api/admin/courses/by-instructor?email={email} - Get courses by instructor
-
-GET /api/admin/courses/{courseId}/enrollment-count - Get student count in a course
-
-# Assignment Management
-
-GET /api/admin/assignments - Retrieve all assignments
-
-GET /api/admin/assignments/{assignmentId} - Retrieve assignment details
-
-POST /api/admin/assignments - Create an assignment
-
-PUT /api/admin/assignments/{assignmentId} - Update an assignment
-
-DELETE /api/admin/assignments/{assignmentId} - Delete an assignment
-
-GET /api/admin/assignments/due-before?date=YYYY-MM-DD - Retrieve assignments due before a date
-
-# Student Endpoints
-
-GET /api/students/{studentId} - Get student profile
-
-PUT /api/students/{studentId} - Update student profile
-
-GET /api/students/{studentId}/courses - Get enrolled courses
-
-POST /api/students/{studentId}/courses/{courseId} - Enroll in a course
-
-DELETE /api/students/{studentId}/courses/{courseId} - Withdraw from a course
-
-GET /api/students/{studentId}/assignments - Get student assignments
-
-# Authentication Endpoints
-
-POST /api/auth/register - Register a new user
-
-POST /api/auth/login - Authenticate user and obtain token
-
-# Notes
+## Notes
 
 Use Postman for testing API requests.
 
